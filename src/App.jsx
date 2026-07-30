@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Toaster } from 'react-hot-toast';
 import { HelmetProvider } from 'react-helmet-async';
@@ -19,11 +19,8 @@ const InternshipPage = lazy(() => import('./pages/InternshipPage'));
 // Simple page loader
 function PageLoader() {
   return (
-    <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--bg)' }}>
-      <div
-        className="w-8 h-8 rounded-full border-2 animate-spin"
-        style={{ borderColor: 'var(--border)', borderTopColor: 'var(--accent)' }}
-      />
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="w-8 h-8 rounded-full border-2 border-border border-t-accent animate-spin" />
     </div>
   );
 }
@@ -51,6 +48,7 @@ function AppRoutes() {
             <Route path="/blog/:slug"       element={<BlogPost />} />
             <Route path="/internship"       element={<InternshipPage />} />
             <Route path="/internship/:slug" element={<InternshipPage />} />
+            <Route path="*"                 element={<HomePage />} />
           </Routes>
         </Suspense>
       </AnimatePresence>
@@ -84,7 +82,7 @@ export default function App() {
 
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <HashRouter>
         <div className="flex flex-col min-h-screen bg-background text-foreground">
           <AppRoutes />
           <Toaster
@@ -100,8 +98,9 @@ export default function App() {
             }}
           />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </HelmetProvider>
   );
 }
+
 
