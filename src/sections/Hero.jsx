@@ -43,7 +43,7 @@ export default function Hero() {
 
               <div className="relative w-44 h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border-2 border-border bg-secondary shadow-xl">
                 <img
-                  src={heroData.profileImg}
+                  src={`${import.meta.env.BASE_URL}profile.jpg`.replace(/\/\//g, '/')}
                   alt={heroData.name}
                   className="w-full h-full object-cover"
                 />
