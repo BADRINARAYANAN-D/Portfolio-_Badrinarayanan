@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDown, Mail } from 'lucide-react';
 import { heroData } from '../data/replitData';
+import profileImg from '../assets/profile.jpg';
+
 
 export default function Hero() {
   const [taglineIndex, setTaglineIndex] = useState(0);
@@ -43,7 +45,7 @@ export default function Hero() {
 
               <div className="relative w-44 h-44 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border-2 border-border bg-secondary shadow-xl">
                 <img
-                  src={`${import.meta.env.BASE_URL}profile.jpg`.replace(/\/\//g, '/')}
+                  src={profileImg}
                   alt={heroData.name}
                   className="w-full h-full object-cover"
                 />
