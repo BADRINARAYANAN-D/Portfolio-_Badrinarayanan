@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Toaster } from 'react-hot-toast';
 import { HelmetProvider } from 'react-helmet-async';
@@ -80,9 +80,12 @@ export default function App() {
     };
   }, []);
 
+  // Determine basename dynamically for GitHub Pages or local dev
+  const basename = process.env.NODE_ENV === 'production' ? '/Portfolio-_Badrinarayanan' : '';
+
   return (
     <HelmetProvider>
-      <HashRouter>
+      <BrowserRouter basename={basename}>
         <div className="flex flex-col min-h-screen bg-background text-foreground">
           <AppRoutes />
           <Toaster
@@ -98,9 +101,10 @@ export default function App() {
             }}
           />
         </div>
-      </HashRouter>
+      </BrowserRouter>
     </HelmetProvider>
   );
 }
+
 
 
